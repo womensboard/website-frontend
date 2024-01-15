@@ -7,7 +7,7 @@ module.exports = {
       'images.pexels.com',
       'images.unsplash.com',
       'volunteersio-dev.s3.eu-west-2.amazonaws.com',
-      process.env.NEXT_PUBLIC_IMAGES_HOST || '',
+      process.env.IMAGES_HOST || '',
     ],
   },
 };
