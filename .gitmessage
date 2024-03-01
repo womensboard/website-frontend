@@ -1,0 +1,31 @@
+<type>: your commit title 
+
+# [bullet point body]
+
+# [footer]
+
+# Notes 
+
+# - type can be one of feat|fix|perf|refactor|chore
+# - body must be bullet point
+# - footer has the structure (closes|relates to|fixes|implements) #issue_number
+
+
+# For example:
+# ```
+# feat: implements login page
+
+# - adds button component
+# - removes image component 
+# - edits violence component
+
+# closes #2
+# ```
+
+# ```
+# fix(auth):correct token expiry time
+
+# closes #2
+# ```
+
+
