@@ -11,7 +11,22 @@ export type EventCardTypes = EventInput & {
 };
 
 const EventCards = (props: EventCardTypes) => {
-  const { eventImage, title, body, buttonLabel, cardPath } = props;
+  const { eventImage, title, body, buttonLabel, cardPath, buttonURL } = props;
+
+  let buttonHref = '';
+
+  if (buttonURL === '') {
+    buttonHref = cardPath;
+  } else {
+    buttonHref = buttonURL;
+  }
+
+  const sentences = body.split('.');
+  let firstSentence = sentences.slice(0, 1).join('. ');
+
+  if (!/[.!?,]$/.test(firstSentence)) {
+    firstSentence += '.';
+  }
 
   return (
     <div className="lg:max-w-[420px] max-w-[343px] relative">
@@ -29,13 +44,13 @@ const EventCards = (props: EventCardTypes) => {
           <h1 className="text-primary_text_color font-[600] xl:h-[66px] mb-[20px] text-[20px] xl:text-[24px]">
             {title}
           </h1>
-          <p className="mt-[8px] mb-[12px] text-secondary_text_color font-[400] h-[60px] text-[16px] leading-[20px] line-clamp-3 max-h-16">
-            {body}
+          <p className="mt-[8px] mb-[12px] text-secondary_text_color font-[400] h-[140px] text-[16px] leading-[20px]">
+            {firstSentence}
           </p>
         </div>
 
         <div className="relative flex gap-[16px]">
-          <Button href={cardPath} size="lg" type="primary">
+          <Button href={buttonHref} size="lg" type="primary">
             {buttonLabel}
           </Button>
         </div>
