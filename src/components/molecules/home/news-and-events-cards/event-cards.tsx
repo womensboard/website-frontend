@@ -28,13 +28,6 @@ const EventCards = (props: EventCardTypes) => {
     firstSentence += '.';
   }
 
-  const sentences = body.split('.');
-  let firstSentence = sentences.slice(0, 1).join('. ');
-
-  if (!/[.!?,]$/.test(firstSentence)) {
-    firstSentence += '.';
-  }
-
   return (
     <div className="lg:max-w-[420px] max-w-[343px] relative">
       <div className="relative lg:w-[420px] w-[343px] lg:h-[320px] h-[240px]">
