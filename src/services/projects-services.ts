@@ -23,6 +23,7 @@ export class ProjectsService {
       description: input.description,
       imageURL: input.imageURL,
       sponsored: input.sponsored,
+      visitURL: input.visitURL,
     });
 
     return res;

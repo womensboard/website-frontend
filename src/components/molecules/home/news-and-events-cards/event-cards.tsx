@@ -13,6 +13,13 @@ export type EventCardTypes = EventInput & {
 const EventCards = (props: EventCardTypes) => {
   const { eventImage, title, body, buttonLabel, cardPath } = props;
 
+  const sentences = body.split('.');
+  let firstSentence = sentences.slice(0, 1).join('. ');
+
+  if (!/[.!?,]$/.test(firstSentence)) {
+    firstSentence += '.';
+  }
+
   return (
     <div className="lg:max-w-[420px] max-w-[343px] relative">
       <div className="relative lg:w-[420px] w-[343px] lg:h-[320px] h-[240px]">
@@ -29,8 +36,8 @@ const EventCards = (props: EventCardTypes) => {
           <h1 className="text-primary_text_color font-[600] xl:h-[66px] mb-[20px] text-[20px] xl:text-[24px]">
             {title}
           </h1>
-          <p className="mt-[8px] mb-[12px] text-secondary_text_color font-[400] h-[60px] text-[16px] leading-[20px] line-clamp-3 max-h-16">
-            {body}
+          <p className="mt-[8px] mb-[12px] text-secondary_text_color font-[400] h-[140px] text-[16px] leading-[20px]">
+            {firstSentence}
           </p>
         </div>
 

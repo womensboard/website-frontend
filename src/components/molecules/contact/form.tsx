@@ -49,8 +49,7 @@ const Form = () => {
     e.preventDefault();
 
     handleSubmit(formValues);
-
-    if (success) setFormValues(defaultValues);
+    if (success || error) setFormValues(defaultValues);
   };
 
   return (
@@ -64,6 +63,7 @@ const Form = () => {
         onSubmit={handleSubmitForm}
       >
         <FormItemWithLabel
+          required
           name="NAME"
           id="NAME"
           inputType="text"
@@ -74,6 +74,7 @@ const Form = () => {
         />
 
         <FormItemWithLabel
+          required
           name="EMAIL"
           id="EMAIL"
           inputType="email"
@@ -84,6 +85,7 @@ const Form = () => {
         />
 
         <FormItemWithLabel
+          required
           name="SUBJECT"
           id="SUBJECT"
           inputType="text"
@@ -94,6 +96,7 @@ const Form = () => {
         />
 
         <FormItemWithLabel
+          required
           name="MESSAGE"
           id="MESSAGE"
           inputType="textarea"
@@ -117,10 +120,9 @@ const Form = () => {
         </div>
       </form>
 
-      <div className="flex flex-col items-center justify-center mb-5 text-primary_CTA_Color font-roboto italic font-[500]">
-        {loading && 'submitting'}
-        {error && message}
-        {success && message}
+      <div className="flex flex-col items-center justify-center mb-5  font-roboto italic font-[500]">
+        {loading && <span className="text-gray-700">submitting</span>}
+        {success && <span className="text-green-500">{message}</span>}
       </div>
     </div>
   );
