@@ -26,7 +26,7 @@ const ITEMS_ON_SCREEN: Record<BreakPointSizes, number> = {
   sm: 1,
   md: 2,
   lg: 2,
-  xl: 3,
+  xl: 2,
 };
 
 type EventCarouselProps = {
