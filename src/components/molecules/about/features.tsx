@@ -99,7 +99,7 @@ const FeaturesSection = () => {
                 <h2 className="font-[600] text-[18px] xl:text-[36px]">
                   {feature.header}
                 </h2>
-                <p className="max-w-[578px] text-secondary_text_color font-[400] xl:leading-[30px] leading-[17px] text-[14px] xl:text-[24px]">
+                <p className="max-w-[578px] text-secondary_text_color text-justify font-[400] xl:leading-[30px] leading-[17px] text-[14px] xl:text-[24px]">
                   {feature.subHeader}
                 </p>
               </div>

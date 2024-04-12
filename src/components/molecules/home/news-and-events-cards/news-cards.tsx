@@ -13,6 +13,13 @@ export type NewsCardTypes = NewsInput & {
 const NewsCards = (props: NewsCardTypes) => {
   const { imageURL, title, description, author, cardPath, date } = props;
 
+  const sentences = description.split('.');
+  let firstSentence = sentences.slice(0, 1).join('. ');
+
+  if (!/[.!?,]$/.test(firstSentence)) {
+    firstSentence += '.';
+  }
+
   return (
     <div className="lg:max-w-[420px] max-w-[343px] relative h-[560px]">
       <div className="relative lg:w-[420px] w-[343px] lg:h-[320px] h-[240px]">
@@ -33,7 +40,7 @@ const NewsCards = (props: NewsCardTypes) => {
           {title}
         </h1>
         <p className="mt-[8px] mb-[12px] text-secondary_text_color font-[400] text-[16px] leading-[20px] line-clamp-3 h-[60px] max-h-16">
-          {description}
+          {firstSentence}
         </p>
         <div className="flex items-center text-secondary_text_color font-[700] gap-[5px]">
           <p>{author}</p>

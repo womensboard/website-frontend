@@ -26,7 +26,7 @@ const ITEMS_ON_SCREEN: Record<BreakPointSizes, number> = {
   sm: 1,
   md: 2,
   lg: 2,
-  xl: 3,
+  xl: 2,
 };
 
 type EventCarouselProps = {
@@ -234,14 +234,15 @@ const EventsCardSection = (props: EventCarouselProps) => {
             </Editable>
           )}
         </div>
-        {newsAndEventArray.length > 3 && (
-          <Link
-            href={eventsBaseHref}
-            className="text-primary_CTA_Color font-mulish font-[700] text-[20px] mt-5 text-center"
-          >
-            View More News and Events
-          </Link>
-        )}
+        {typeof itemsOnScreen !== 'undefined' &&
+          newsAndEventArray.length > itemsOnScreen && (
+            <Link
+              href={eventsBaseHref}
+              className="text-primary_CTA_Color font-mulish font-[700] text-[20px] mt-5 text-center"
+            >
+              View More News and Events
+            </Link>
+          )}
       </div>
 
       <Modal

@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/layout/navbar';
 import Details from '@/components/molecules/contact/details';
-import Form from '@/components/molecules/contact/form';
 import Footer from '@/components/molecules/footer';
 import clsx from 'clsx';
 import { Editable } from '@/components/organism/Editable';
@@ -14,6 +13,7 @@ import {
 } from '@/components/organism/forms/contact/edit-contacts-form';
 import { ContactService } from 'services/contact-services';
 import { LoadingSpiner } from '@/components/atom/loading-spinner';
+import Button from '@/components/atom/button';
 
 type ContactProps = {
   isAdmin: boolean;
@@ -62,6 +62,9 @@ const Contact = (props: ContactProps) => {
     setShowModal('update');
   };
 
+  const contactFormURL =
+    process.env.NEXT_PUBLIC_MAILCHIMP_CONTACT_FORM_URL || '';
+
   return (
     <div className={clsx(isAdmin && 'group is-admin', 'font-mulish')}>
       <Navbar isAdmin={isAdmin} />
@@ -78,7 +81,25 @@ const Contact = (props: ContactProps) => {
         )}
         {!loading && <Details contactDetailsData={contactDetails} />}
       </Editable>
-      <Form />
+
+      <div className="flex flex-col items-center justify-center lg:my-[104px] my-[40px]">
+        <h3 className="text-primary_CTA_Color text-center md:mb-[64px] font-[600] text-[14px] md:text-[24px]">
+          or send a direct message via this form below
+        </h3>
+        <div className="flex justify-center">
+          <Button
+            href={contactFormURL}
+            type="cta"
+            size="md"
+            disabled={loading}
+            loading={loading}
+            rounded
+          >
+            Click Here
+          </Button>
+        </div>
+      </div>
+
       <Footer isAdmin={isAdmin} />
 
       <Modal
