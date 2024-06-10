@@ -15,6 +15,9 @@ type FooterProps = {
 const Footer = (props: FooterProps) => {
   const { isAdmin = false, links = navlinksData } = props;
 
+  const date = new Date();
+  const currentYear = date.getFullYear();
+
   const socialIcons = [
     {
       icon: <CiFacebook size={30} />,
@@ -59,7 +62,7 @@ const Footer = (props: FooterProps) => {
       </div>
 
       <p className="md:text-[16px] text-[8px] text-center">
-        &copy; 2023 Women’s Board, All Rights Reserved.
+        &copy; {currentYear} Women’s Board, All Rights Reserved.
       </p>
     </div>
   );
