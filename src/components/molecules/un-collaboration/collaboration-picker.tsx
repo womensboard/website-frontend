@@ -1,5 +1,5 @@
 import { CollaborationItem } from 'config/collaborations';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import YearButton from './year-button';
 import CollaborationLists from './collaboration-lists';
 import clsx from 'clsx';
@@ -13,6 +13,12 @@ type CollaborationPickerProps = {
 const CollaborationPicker = (props: CollaborationPickerProps) => {
   const { onItemClick, onAddNewYear, collaborations } = props;
   const [selectedIndex, setSelectedIndex] = useState(0);
+
+  useEffect(() => {
+    if (collaborations.length > 0) {
+      setSelectedIndex(0);
+    }
+  }, [collaborations]);
 
   const handleItemClick = (index: number) => {
     setSelectedIndex(index);
