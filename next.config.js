@@ -7,7 +7,6 @@ module.exports = {
       'images.pexels.com',
       'images.unsplash.com',
       'volunteersio-dev.s3.eu-west-2.amazonaws.com',
-      'womens-board.s3.eu-west-2.amazonaws.com',
       process.env.IMAGES_HOST || '',
     ],
   },

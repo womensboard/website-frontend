@@ -234,14 +234,15 @@ const EventsCardSection = (props: EventCarouselProps) => {
             </Editable>
           )}
         </div>
-        {newsAndEventArray.length > 3 && (
-          <Link
-            href={eventsBaseHref}
-            className="text-primary_CTA_Color font-mulish font-[700] text-[20px] mt-5 text-center"
-          >
-            View More News and Events
-          </Link>
-        )}
+        {typeof itemsOnScreen !== 'undefined' &&
+          newsAndEventArray.length > itemsOnScreen && (
+            <Link
+              href={eventsBaseHref}
+              className="text-primary_CTA_Color font-mulish font-[700] text-[20px] mt-5 text-center"
+            >
+              View More News and Events
+            </Link>
+          )}
       </div>
 
       <Modal

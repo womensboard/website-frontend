@@ -11,7 +11,15 @@ export type EventCardTypes = EventInput & {
 };
 
 const EventCards = (props: EventCardTypes) => {
-  const { eventImage, title, body, buttonLabel, cardPath } = props;
+  const { eventImage, title, body, buttonLabel, cardPath, buttonURL } = props;
+
+  let buttonHref = '';
+
+  if (buttonURL === '') {
+    buttonHref = cardPath;
+  } else {
+    buttonHref = buttonURL;
+  }
 
   const sentences = body.split('.');
   let firstSentence = sentences.slice(0, 1).join('. ');
@@ -42,7 +50,7 @@ const EventCards = (props: EventCardTypes) => {
         </div>
 
         <div className="relative flex gap-[16px]">
-          <Button href={cardPath} size="lg" type="primary">
+          <Button href={buttonHref} size="lg" type="primary">
             {buttonLabel}
           </Button>
         </div>
