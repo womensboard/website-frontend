@@ -8,6 +8,7 @@ import Logo from '../atom/logo';
 import { navlinksData } from '../molecules/navlinksData';
 import SocialIcons from '../molecules/social-icons';
 import clsx from 'clsx';
+import Button from '../atom/button';
 
 type NavbarProps = {
   isAdmin?: boolean;
@@ -36,7 +37,14 @@ const Navbar = ({ isAdmin = false }: NavbarProps) => {
 
       <div className="sticky top-0 shadow-lg flex items-center justify-between z-[5] bg-secondary_color font-mulish mx-auto lg:p-[30px_70px]">
         <Navlinks isAdmin={isAdmin} links={navlinksData} />
-        <div className="lg:flex hidden">
+        <div className="lg:flex hidden gap-5">
+          <Button
+            href="https://sites.google.com/view/our-resource/resources"
+            type="tertiary"
+            size="normal"
+          >
+            Resources
+          </Button>
           <DonateCTALink showModal={showModal} setShowModal={setShowModal} />
         </div>
       </div>
