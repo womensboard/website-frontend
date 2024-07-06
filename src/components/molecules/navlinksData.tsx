@@ -29,3 +29,31 @@ export const navlinksData: Navlink[] = [
     adminHref: paths.adminContact,
   },
 ];
+
+export const mobileNavlinksData: Navlink[] = [
+  {
+    title: 'About',
+    href: paths.about,
+    adminHref: paths.adminAbout,
+  },
+  {
+    title: 'Projects',
+    href: paths.project,
+    adminHref: paths.adminProject,
+  },
+  {
+    title: 'Resources',
+    href: paths.resources,
+    adminHref: '',
+  },
+  {
+    title: 'UN Collaboration',
+    href: paths.UNCollaboration,
+    adminHref: paths.adminUNCollaboration,
+  },
+  {
+    title: 'Contact',
+    href: paths.contact,
+    adminHref: paths.adminContact,
+  },
+];
