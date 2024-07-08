@@ -4,6 +4,7 @@ export const paths = {
   about: '/about',
   contact: '/contact',
   project: '/project',
+  resources: 'https://sites.google.com/view/our-resource/resources',
   UNCollaboration: '/UN-collaboration',
   stagingURL: 'https://womensboard.vercel.app',
   productionURL: 'https://womensboard.org.ng/',
