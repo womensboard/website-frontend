@@ -161,8 +161,14 @@ const Events = (props: EventsProps) => {
             <p className="italic mb-[40px]">No News and Event</p>
           ) : (
             events.map((singleEvent, index) => {
-              const { eventImage, title, body, buttonLabel, buttonURL } =
-                singleEvent;
+              const {
+                eventImage,
+                title,
+                body,
+                buttonLabel,
+                buttonURL,
+                createdAt,
+              } = singleEvent;
 
               const eventCardURL = `${eventsBaseHref}/${singleEvent.id}`;
               return (
@@ -181,6 +187,7 @@ const Events = (props: EventsProps) => {
                     buttonLabel={buttonLabel}
                     buttonURL={buttonURL}
                     cardPath={eventCardURL}
+                    createdAt={createdAt}
                   />
                 </Editable>
               );

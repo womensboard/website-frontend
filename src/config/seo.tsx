@@ -10,6 +10,7 @@ const Seo = (props: SeoPropType) => {
   const option = SeoProps[name];
 
   const { description, title, image } = option;
+
   return (
     <Head>
       <title>Women&apos;s Board</title>

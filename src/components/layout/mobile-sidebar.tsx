@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { navlinksData } from '../molecules/navlinksData';
+import { mobileNavlinksData } from '../molecules/navlinksData';
 import Link from 'next/link';
 import clsx from 'clsx';
 import Logo from '../atom/logo';
@@ -36,7 +36,7 @@ const MobileSideBar = (props: MobileSideBarProp) => {
         </div>
       </div>
       <div className="grid pt-[40px]  ">
-        {navlinksData.map((item, index) => {
+        {mobileNavlinksData.map((item, index) => {
           const href = isAdmin ? item.adminHref : item.href;
           const currentClass =
             pathname === href && 'bg-primary_CTA_Color text-white';

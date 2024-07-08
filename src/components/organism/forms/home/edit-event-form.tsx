@@ -14,6 +14,7 @@ export type EventInput = {
   eventImage: string[];
   shareURL: string;
   buttonURL: string;
+  createdAt: Date;
 };
 
 export type EventData = EventInput & {
@@ -32,6 +33,7 @@ const defaultValues: EventInput = {
   buttonLabel: '',
   shareURL: '',
   buttonURL: '',
+  createdAt: new Date(),
   eventImage: ['/assets/images/heroSectionImage.jpeg'],
 };
 
