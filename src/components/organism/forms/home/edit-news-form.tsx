@@ -11,6 +11,7 @@ export type NewsInput = {
   description: string;
   author: string;
   imageURL: string[];
+  createdAt: Date;
 };
 export type NewsData = NewsInput & {
   id: string;
@@ -21,6 +22,7 @@ const defaultValues: NewsInput = {
   description: '',
   author: '',
   imageURL: ['/assets/images/heroSectionImage.jpeg'],
+  createdAt: new Date(),
 };
 
 type NewsFormProps = {
