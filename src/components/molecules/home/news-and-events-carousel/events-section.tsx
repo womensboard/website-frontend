@@ -52,7 +52,14 @@ const EventsCardSection = (props: EventCarouselProps) => {
   useEffect(() => {
     async function retrieveEvents() {
       const { data: eventsData } = await EventService.fetchEvents();
-      if (eventsData) setEvents(eventsData);
+      if (eventsData) {
+        const sortedEvents = eventsData.sort((a, b) => {
+          return (
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
+        });
+        setEvents(sortedEvents);
+      }
     }
     retrieveEvents();
   }, []);
@@ -70,7 +77,15 @@ const EventsCardSection = (props: EventCarouselProps) => {
     if (showModal === 'createEvent') {
       res = await EventService.createEvents(values);
       const newItem = res.data;
-      if (newItem) setEvents((items) => [...items, newItem]);
+      if (newItem) {
+        const updatedEvents = [newItem, ...events];
+        const sortedEvents = updatedEvents.sort((a, b) => {
+          return (
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
+        });
+        setEvents(sortedEvents);
+      }
     } else {
       res = await EventService.updateEvents(
         currentEvents?.id as string,
@@ -78,13 +93,18 @@ const EventsCardSection = (props: EventCarouselProps) => {
       );
 
       const updatedItem = res.data;
-      if (updatedItem)
-        setEvents((items) =>
-          items.map((item) => {
-            if (item.id === updatedItem.id) return updatedItem;
-            return item;
-          })
-        );
+      if (updatedItem) {
+        const updatedEvents = events.map((item) => {
+          if (item.id === updatedItem.id) return updatedItem;
+          return item;
+        });
+        const sortedEvents = updatedEvents.sort((a, b) => {
+          return (
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
+        });
+        setEvents(sortedEvents);
+      }
     }
 
     if (res.data) {
@@ -93,12 +113,13 @@ const EventsCardSection = (props: EventCarouselProps) => {
 
     return res;
   };
+
   const handleSubmitNews = async (values: NewsInput) => {
     let res;
     if (showModal === 'createNews') {
       res = await NewsService.createNews(values);
       const newItem = res.data;
-      if (newItem) setNews((items) => [...items, newItem]);
+      if (newItem) setNews((items) => [newItem, ...items]);
     } else {
       res = await NewsService.updateNews(currentNews?.id as string, values);
 
@@ -156,7 +177,6 @@ const EventsCardSection = (props: EventCarouselProps) => {
   const newsAndEventArray = [...news, ...events];
 
   const date = new Date();
-
   const day = date.getDate();
   const month = date.getMonth();
   const year = date.getFullYear();
@@ -171,8 +191,14 @@ const EventsCardSection = (props: EventCarouselProps) => {
             <p className="italic mb-[40px]">No Event</p>
           ) : (
             events.slice(0, itemsOnScreen).map((singleEvent, index) => {
-              const { eventImage, title, body, buttonLabel, buttonURL } =
-                singleEvent;
+              const {
+                eventImage,
+                title,
+                body,
+                buttonLabel,
+                buttonURL,
+                createdAt,
+              } = singleEvent;
 
               const singleEventURL = `${eventsBaseHref}/${singleEvent.id}`;
 
@@ -192,6 +218,7 @@ const EventsCardSection = (props: EventCarouselProps) => {
                     buttonLabel={buttonLabel}
                     buttonURL={buttonURL}
                     cardPath={singleEventURL}
+                    createdAt={createdAt}
                   />
                 </Editable>
               );
