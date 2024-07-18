@@ -225,7 +225,8 @@ const EventsCardSection = (props: EventCarouselProps) => {
             })
           )}
           {news.slice(0, itemsOnScreen).map((singleNews, index) => {
-            const { imageURL, title, description, author } = singleNews;
+            const { imageURL, title, description, author, createdAt } =
+              singleNews;
 
             const singleNewsURL = `${newsBaseHref}/${singleNews.id}`;
             return (
@@ -245,6 +246,7 @@ const EventsCardSection = (props: EventCarouselProps) => {
                   shareURL={`${paths.productionURL}/${singleNewsURL}`}
                   cardPath={singleNewsURL}
                   date={`${day}-${month + 1}-${year}`}
+                  createdAt={createdAt}
                 />
               </Editable>
             );

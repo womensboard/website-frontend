@@ -107,7 +107,8 @@ const NewsCardSection = (props: NewsCarouselProps) => {
             <p className="italic mb-[40px]">No News</p>
           ) : (
             news.slice(0, itemsOnScreen).map((singleNews, index) => {
-              const { imageURL, title, description, author } = singleNews;
+              const { imageURL, title, description, author, createdAt } =
+                singleNews;
 
               const singleNewsURL = `${baseHref}/${singleNews.id}`;
 
@@ -127,6 +128,7 @@ const NewsCardSection = (props: NewsCarouselProps) => {
                     shareURL={`${paths.productionURL}/${singleNewsURL}`}
                     cardPath={singleNewsURL}
                     date={`${day}-${month + 1}-${year}`}
+                    createdAt={createdAt}
                   />
                 </Editable>
               );

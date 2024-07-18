@@ -42,7 +42,14 @@ const Events = (props: EventsProps) => {
   useEffect(() => {
     async function retrieveEvents() {
       const { data: eventsData } = await EventService.fetchEvents();
-      if (eventsData) setEvents(eventsData);
+      if (eventsData) {
+        const sortedEvents = eventsData.sort((a, b) => {
+          return (
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
+        });
+        setEvents(sortedEvents);
+      }
     }
     retrieveEvents();
   }, []);
@@ -50,7 +57,14 @@ const Events = (props: EventsProps) => {
   useEffect(() => {
     async function retrieveNews() {
       const { data: newsData } = await NewsService.fetchNews();
-      if (newsData) setNews(newsData);
+      if (newsData) {
+        const sortedNews = newsData.sort((a, b) => {
+          return (
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
+        });
+        setNews(sortedNews);
+      }
     }
     retrieveNews();
   }, []);
@@ -156,7 +170,7 @@ const Events = (props: EventsProps) => {
           <SectionHeading heading="News and Events" />
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-[20px] my-2">
+        <div className="flex flex-wrap items-center justify-center gap-[20px] my-2 px-5">
           {events.length < 1 ? (
             <p className="italic mb-[40px]">No News and Event</p>
           ) : (
@@ -194,7 +208,8 @@ const Events = (props: EventsProps) => {
             })
           )}
           {news.map((singleNews, index) => {
-            const { imageURL, title, description, author } = singleNews;
+            const { imageURL, title, description, author, createdAt } =
+              singleNews;
             const singleNewsURL = `${newsBaseHref}/${singleNews.id}`;
 
             return (
@@ -214,6 +229,7 @@ const Events = (props: EventsProps) => {
                   shareURL={`${paths.productionURL}/${singleNewsURL}`}
                   cardPath={singleNewsURL}
                   date={`${day}-${month + 1}-${year}`}
+                  createdAt={createdAt}
                 />
               </Editable>
             );
