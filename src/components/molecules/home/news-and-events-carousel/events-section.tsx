@@ -67,7 +67,14 @@ const EventsCardSection = (props: EventCarouselProps) => {
   useEffect(() => {
     async function retrieveNews() {
       const { data: newsData } = await NewsService.fetchNews();
-      if (newsData) setNews(newsData);
+      if (newsData) {
+        const sortedNews = newsData.sort((a, b) => {
+          return (
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
+        });
+        setNews(sortedNews);
+      }
     }
     retrieveNews();
   }, []);
