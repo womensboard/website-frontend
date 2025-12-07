@@ -11,7 +11,7 @@ type Input = {
 export async function getUserSession(input: Partial<Input> = {}) {
   const { allowOnlyLoggedInUsers = true } = input;
   const session = await getServerSession(authOptions);
-  const headersList = headers();
+  const headersList = await headers();
   const pathname = headersList.get('x-invoke-path') || '';
 
   if (!session && allowOnlyLoggedInUsers) {

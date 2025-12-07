@@ -1,6 +1,6 @@
+import SuspendedLogin from '@/components/suspense-boundary/login';
 import Image from 'next/image';
 import React from 'react';
-import { LoginActions } from './LoginActions';
 
 const LoginPage = () => {
   const logo = '/assets/images/womensBoardLogo.png';
@@ -17,7 +17,7 @@ const LoginPage = () => {
           className="mb-[30px] mx-auto"
         />
 
-        <LoginActions />
+        <SuspendedLogin />
       </div>
     </div>
   );

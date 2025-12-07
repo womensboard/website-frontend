@@ -7,7 +7,7 @@ import React, { SyntheticEvent, useEffect } from 'react';
 
 const googleLogo = '/assets/images/google-logo.png';
 
-export const LoginActions = () => {
+const LoginActions = () => {
   const router = useRouter();
 
   const searchParams = useSearchParams();
@@ -51,3 +51,5 @@ export const LoginActions = () => {
     </button>
   );
 };
+
+export default LoginActions;
